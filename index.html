@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Misc.</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: #111626;
+      --panel2: #0f1423;
+      --text: #e9edf7;
+      --muted: #a6b0c3;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.16), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.10), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    header{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 18px 10px;
+    }
+    h1{
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .sub{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      display:none; /* 説明文なし：必要になったら消して表示してもOK */
+    }
+
+    main{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 18px 42px;
+    }
+
+    .grid{
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 680px){
+      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px){
+      .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .card{
+      position: relative;
+      display: block;
+      padding: 16px 16px 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 64px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+    }
+    .card:focus-visible{
+      outline: 2px solid rgba(140,160,255,.55);
+      outline-offset: 3px;
+    }
+
+    .title{
+      margin: 0;
+      font-size: 16px;
+      font-weight: 650;
+      line-height: 1.35;
+      padding-right: 22px;
+    }
+
+    .ext{
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 18px;
+      height: 18px;
+      opacity: .72;
+    }
+    .card:hover .ext{ opacity: .95; }
+
+    footer{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer a{ color: inherit; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Misc.</h1>
+  </header>
+
+  <main>
+    <section class="grid">
+
+      <!-- ▼ ここからカードをコピペで増やすだけ ▼ -->
+      <a class="card" href="https://example.com" target="_blank" rel="noopener noreferrer">
+        <h2 class="title">Tool Name</h2>
+        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <a class="card" href="https://example.com" target="_blank" rel="noopener noreferrer">
+        <h2 class="title">Another Tool</h2>
+        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <!-- ▲ ここまで ▲ -->
+
+    </section>
+  </main>
+
+  <footer>
+    <!-- 何も置かんでもOK。消してもええ -->
+  </footer>
+</body>
+</html>
