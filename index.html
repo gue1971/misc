@@ -8,13 +8,13 @@
 
   <style>
     :root{
-      --bg: #0b0d12;
-      --panel: #111626;
-      --panel2: #0f1423;
-      --text: #e9edf7;
-      --muted: #a6b0c3;
-      --border: rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      /* ▼ 色設定をライトモード用に変更したよ ▼ */
+      --bg: #f8f9fc;          /* 背景：ほんのり青みのある白 */
+      --panel: #ffffff;       /* カード背景：真っ白 */
+      --text: #1a202c;        /* 文字色：真っ黒ではなく濃いグレー */
+      --muted: #64748b;       /* サブ文字色：落ち着いたグレー */
+      --border: rgba(0,0,0,.06); /* ボーダー：薄い黒 */
+      --shadow: 0 4px 20px rgba(0,0,0,.05); /* 影：ふんわりと */
       --radius: 16px;
     }
 
@@ -23,8 +23,9 @@
     body{
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.16), transparent 60%),
-                  radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.10), transparent 55%),
+      /* 背景のグラデーションも白に合わせて調整（少し薄く） */
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.12), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.12), transparent 55%),
                   var(--bg);
       color: var(--text);
     }
@@ -39,13 +40,7 @@
       font-size: 28px;
       font-weight: 700;
       letter-spacing: .02em;
-    }
-    .sub{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-      display:none; /* 説明文なし：必要になったら消して表示してもOK */
+      color: var(--text);
     }
 
     main{
@@ -70,23 +65,24 @@
       position: relative;
       display: block;
       padding: 16px 16px 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      /* 白ベースなので透過ではなく実色（白）を使用 */
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       text-decoration: none;
       color: inherit;
       box-shadow: var(--shadow);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
       -webkit-tap-highlight-color: transparent;
       min-height: 64px;
     }
     .card:hover{
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,.22);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      border-color: rgba(0,0,0,.15); /* ホバー時は枠線を少し濃く */
+      box-shadow: 0 8px 25px rgba(0,0,0,.08); /* 浮き上がる演出 */
     }
     .card:focus-visible{
-      outline: 2px solid rgba(140,160,255,.55);
+      outline: 2px solid rgba(140,160,255,.8);
       outline-offset: 3px;
     }
 
@@ -96,6 +92,7 @@
       font-weight: 650;
       line-height: 1.35;
       padding-right: 22px;
+      color: var(--text);
     }
 
     .ext{
@@ -104,9 +101,10 @@
       right: 14px;
       width: 18px;
       height: 18px;
-      opacity: .72;
+      color: var(--muted); /* アイコンは少し控えめな色に */
+      transition: color .12s ease;
     }
-    .card:hover .ext{ opacity: .95; }
+    .card:hover .ext{ color: var(--text); } /* ホバーで濃く */
 
     footer{
       max-width: 1100px;
@@ -127,7 +125,6 @@
   <main>
     <section class="grid">
 
-      <!-- ▼ ここからカードをコピペで増やすだけ ▼ -->
       <a class="card" href="https://gue1971.github.io/world-history-timeline/" target="_blank" rel="noopener noreferrer">
         <h2 class="title">世界史年表DB</h2>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -176,13 +173,10 @@
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
-      <!-- ▲ ここまで ▲ -->
-
-    </section>
+      </section>
   </main>
 
   <footer>
-    <!-- 何も置かんでもOK。消してもええ -->
-  </footer>
+    </footer>
 </body>
 </html>
