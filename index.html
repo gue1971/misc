@@ -14,13 +14,13 @@
 
   <style>
     :root{
-      /* ▼ 色設定をライトモード用に変更したよ ▼ */
+      /* ▼ 色設定（ライトモード用） ▼ */
       --bg: #f8f9fc;          /* 背景：ほんのり青みのある白 */
       --panel: #ffffff;       /* カード背景：真っ白 */
-      --text: #1a202c;        /* 文字色：真っ黒ではなく濃いグレー */
+      --text: #1a202c;        /* 文字色：濃いグレー */
       --muted: #64748b;       /* サブ文字色：落ち着いたグレー */
       --border: rgba(0,0,0,.06); /* ボーダー：薄い黒 */
-      --shadow: 0 4px 20px rgba(0,0,0,.05); /* 影：ふんわりと */
+      --shadow: 0 4px 20px rgba(0,0,0,.05); /* 影 */
       --radius: 16px;
     }
 
@@ -29,7 +29,7 @@
     body{
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP", "Hiragino Sans", "Helvetica Neue", Arial, sans-serif;
-      /* 背景のグラデーションも白に合わせて調整（少し薄く） */
+      /* 背景グラデーション */
       background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.12), transparent 60%),
                   radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.12), transparent 55%),
                   var(--bg);
@@ -69,9 +69,8 @@
 
     .card{
       position: relative;
-      display: block;
+      display: block; /* リンク全体をブロックに */
       padding: 16px 16px 14px;
-      /* 白ベースなので透過ではなく実色（白）を使用 */
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -80,37 +79,54 @@
       box-shadow: var(--shadow);
       transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
       -webkit-tap-highlight-color: transparent;
-      min-height: 64px;
+      min-height: 80px; /* サブタイトル分少し高さを確保 */
     }
     .card:hover{
       transform: translateY(-2px);
-      border-color: rgba(0,0,0,.15); /* ホバー時は枠線を少し濃く */
-      box-shadow: 0 8px 25px rgba(0,0,0,.08); /* 浮き上がる演出 */
+      border-color: rgba(0,0,0,.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
     }
     .card:focus-visible{
       outline: 2px solid rgba(140,160,255,.8);
       outline-offset: 3px;
     }
 
+    /* テキスト配置用のラッパー */
+    .text-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 24px; /* アイコン分の右余白 */
+      height: 100%;
+    }
+
     .title{
-      margin: 0;
+      margin: 0 0 4px 0;
       font-size: 16px;
-      font-weight: 650;
+      font-weight: 700;
       line-height: 1.35;
-      padding-right: 22px;
       color: var(--text);
     }
 
+    .subtitle {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* アイコン設定 */
     .ext{
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 18px;
+      right: 16px;
       width: 18px;
       height: 18px;
-      color: var(--muted); /* アイコンは少し控えめな色に */
+      color: var(--muted);
       transition: color .12s ease;
     }
-    .card:hover .ext{ color: var(--text); } /* ホバーで濃く */
+    .card:hover .ext{ color: var(--text); }
 
     footer{
       max-width: 1100px;
@@ -132,57 +148,80 @@
     <section class="grid">
 
       <a class="card" href="https://gue1971.github.io/world-history-timeline/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">世界史年表DB</h2>
+        <div class="text-box">
+          <h2 class="title">世界史年表DB</h2>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+
       <a class="card" href="https://gue1971.github.io/my-horse/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">My Stable - 出資馬閲覧アプリ</h2>
+        <div class="text-box">
+          <h2 class="title">My Stable</h2>
+          <p class="subtitle">出資馬閲覧アプリ</p>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+
       <a class="card" href="https://gue1971.github.io/race-board/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">レース盤 - 競馬の展開予想補助ツール</h2>
+        <div class="text-box">
+          <h2 class="title">レース盤</h2>
+          <p class="subtitle">競馬の展開予想補助ツール</p>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+
       <a class="card" href="https://gue1971.github.io/my_racing_viewer/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">My Racing Viewer - 競馬競争視聴アプリ</h2>
+        <div class="text-box">
+          <h2 class="title">My Racing Viewer</h2>
+          <p class="subtitle">競馬競争視聴アプリ</p>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+
       <a class="card" href="https://gue1971.github.io/catalog-photos/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">クラブ優駿カタログ - クラブ馬の募集時アルバム</h2>
+        <div class="text-box">
+          <h2 class="title">クラブ優駿カタログ</h2>
+          <p class="subtitle">クラブ馬の募集時アルバム</p>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
+
       <a class="card" href="https://gue1971.github.io/image-refinery/" target="_blank" rel="noopener noreferrer">
-        <h2 class="title">Image Refinery - 画像クロップ＆リサイズ</h2>
+        <div class="text-box">
+          <h2 class="title">Image Refinery</h2>
+          <p class="subtitle">画像クロップ＆リサイズ</p>
+        </div>
         <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </a>
-      </section>
+
+    </section>
   </main>
 
   <footer>
-    </footer>
+  </footer>
 </body>
 </html>
