@@ -107,7 +107,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-right: 24px; /* 右上の矢印とかぶらないための余白 */
       flex-grow: 1; /* 余ったスペースをテキストエリアが埋める */
     }
 
@@ -125,22 +124,6 @@
       color: var(--muted);
       font-weight: 500;
       line-height: 1.4;
-    }
-
-    /* 右上の矢印アイコン */
-    .ext{
-      position: absolute;
-      top: 14px; /* 位置を微調整 */
-      right: 14px;
-      width: 18px;
-      height: 18px;
-      color: var(--muted);
-      transition: color .12s ease;
-      opacity: 0.7; /* 少し控えめに */
-    }
-    .card:hover .ext{ 
-      color: var(--text); 
-      opacity: 1;
     }
 
     footer{
@@ -168,11 +151,6 @@
           <h2 class="title">世界史年表DB</h2>
           <p class="subtitle">世界史年表</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/my-horse/" target="_blank" rel="noopener noreferrer">
@@ -181,11 +159,6 @@
           <h2 class="title">My Stable</h2>
           <p class="subtitle">出資馬閲覧アプリ</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/race-board/" target="_blank" rel="noopener noreferrer">
@@ -194,11 +167,6 @@
           <h2 class="title">レース盤</h2>
           <p class="subtitle">競馬の展開予想補助ツール</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/my_racing_viewer/" target="_blank" rel="noopener noreferrer">
@@ -207,11 +175,6 @@
           <h2 class="title">My Racing Viewer</h2>
           <p class="subtitle">競馬のレース動画視聴アプリ</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/catalog-photos/" target="_blank" rel="noopener noreferrer">
@@ -220,11 +183,6 @@
           <h2 class="title">クラブ優駿カタログ</h2>
           <p class="subtitle">募集時アルバム</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/image-refinery/" target="_blank" rel="noopener noreferrer">
@@ -233,11 +191,6 @@
           <h2 class="title">Image Refinery</h2>
           <p class="subtitle">画像クロップ＆リサイズ</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/body-tune/" target="_blank" rel="noopener noreferrer">
@@ -246,11 +199,6 @@
           <h2 class="title">Body Tune</h2>
           <p class="subtitle">生活習慣の向上支援ツール</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/trash-days/" target="_blank" rel="noopener noreferrer">
@@ -259,11 +207,6 @@
           <h2 class="title">Trash Days</h2>
           <p class="subtitle">ゴミ出しカレンダー</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
       <a class="card" href="https://gue1971.github.io/monory/" target="_blank" rel="noopener noreferrer">
@@ -272,11 +215,6 @@
           <h2 class="title">Monory</h2>
           <p class="subtitle">所有物の記録アプリ</p>
         </div>
-        <svg class="ext" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 14 19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
       </a>
 
     </section>
