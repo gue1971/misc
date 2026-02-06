@@ -134,46 +134,47 @@
       font-size: 12px;
     }
     footer a{ color: inherit; }
-  
-    /* ▼ 画面切替（隠れ画面） ▼ */
-    #mainView{ display: grid; }
-    #secretView{ display: none; }
-    body.view-secret #mainView{ display: none; }
-    body.view-secret #secretView{ display: grid; }
 
-    /* タイトルクリックを見た目そのままに */
-    #titleToggle{
-      appearance: none;
-      -webkit-appearance: none;
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-      font: inherit;
-      color: inherit;
-      letter-spacing: inherit;
-      cursor: pointer;
-    }
-    #titleToggle:focus-visible{
-      outline: 2px solid rgba(140,160,255,.8);
-      outline-offset: 4px;
-      border-radius: 8px;
-    }
 
-    /* 隠れ画面だけ配色を反転（構造・挙動はそのまま） */
-    body.view-secret{
-      --bg: #0b1220;
-      --panel: #0f172a;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --border: rgba(255,255,255,.12);
-      --shadow: 0 8px 30px rgba(0,0,0,.45);
-    }
-    body.view-secret{
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.18), transparent 60%),
-                  radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.10), transparent 55%),
-                  var(--bg);
-    }
+/* ▼ 画面切替（隠れ画面） ▼ */
+#mainView{ display: grid; }
+#secretView{ display: none; }
+body.view-secret #mainView{ display: none; }
+body.view-secret #secretView{ display: grid; }
+
+/* タイトルクリックを見た目そのままに */
+#titleToggle{
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+#titleToggle:focus-visible{
+  outline: 2px solid rgba(140,160,255,.8);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* 隠れ画面だけ配色を反転 */
+body.view-secret{
+  --bg: #0b1220;
+  --panel: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: rgba(255,255,255,.12);
+  --shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+body.view-secret{
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(140,160,255,.18), transparent 60%),
+              radial-gradient(1000px 700px at 110% 10%, rgba(255,140,200,.10), transparent 55%),
+              var(--bg);
+}
   </style>
 </head>
 
@@ -248,12 +249,11 @@
           <p class="subtitle">ゴミ出しカレンダー</p>
         </div>
       </a>
-      
+
     </section>
     
-
     <section class="grid" id="secretView">
-
+      
       <a class="card" href="https://gue1971.github.io/monory/" target="_blank" rel="noopener noreferrer">
         <img src="./assets/icons/monory.png" class="app-icon" alt="Monory Icon">
         <div class="text-box">
@@ -263,32 +263,10 @@
       </a>
       
     </section>
+
   </main>
 
   <footer>
   </footer>
-
-  <script>
-    (function(){
-      function applyView(){
-        document.body.classList.toggle('view-secret', location.hash === '#secret');
-      }
-      applyView();
-      window.addEventListener('hashchange', applyView);
-
-      var btn = document.getElementById('titleToggle');
-      if (btn){
-        btn.addEventListener('click', function(){
-          if (location.hash === '#secret'){
-            // デフォルト画面へ
-            location.hash = '';
-          } else {
-            // 隠れ画面へ
-            location.hash = 'secret';
-          }
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
