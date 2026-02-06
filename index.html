@@ -1,18 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Misc.</title>
-
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <link rel="icon" href="./favicon.ico">
-
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="robots" content="noindex,nofollow" />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Misc.</title>
+<link href="./manifest.webmanifest" rel="manifest"/>
+<link href="./apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="./favicon.ico" rel="icon"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="noindex,nofollow" name="robots">
+<style>
     :root{
       /* ▼ 色設定 ▼ */
       --bg: #f8f9fc;
@@ -134,93 +132,157 @@
       font-size: 12px;
     }
     footer a{ color: inherit; }
-  </style>
-</head>
+  
+    /* ▼ タイトルをタップで切替 ▼ */
+    #pageTitle{
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    .secret-label{
+      margin: 6px 0 0 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
 
+    /* ▼ 隠れ画面（配色反転） ▼ */
+    body.secret{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --text: #eef2ff;
+      --muted: rgba(238,242,255,.72);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    body.secret{
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(80,120,255,.18), transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, rgba(255,80,160,.16), transparent 55%),
+                  var(--bg);
+    }
+    body.secret .card:hover{
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 12px 36px rgba(0,0,0,.45);
+    }
+</style>
+</meta></head>
 <body>
-  <header>
-    <h1>Misc.</h1>
-  </header>
+<header>
+<h1 aria-label="toggle secret page" id="pageTitle" role="button" tabindex="0">Misc.</h1><p class="secret-label" hidden="" id="secretLabel">Monory</p>
+</header>
+<main>
+<section class="grid" id="gridDefault">
+<a class="card" href="https://gue1971.github.io/world-history-timeline/" rel="noopener noreferrer" target="_blank">
+<img alt="Timeline Icon" class="app-icon" src="./assets/icons/timeline.png"/>
+<div class="text-box">
+<h2 class="title">世界史年表DB</h2>
+<p class="subtitle">世界史年表</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/my-horse/" rel="noopener noreferrer" target="_blank">
+<img alt="Stable Icon" class="app-icon" src="./assets/icons/horse.png"/>
+<div class="text-box">
+<h2 class="title">My Stable</h2>
+<p class="subtitle">出資馬閲覧アプリ</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/race-board/" rel="noopener noreferrer" target="_blank">
+<img alt="Board Icon" class="app-icon" src="./assets/icons/board.png"/>
+<div class="text-box">
+<h2 class="title">レース盤</h2>
+<p class="subtitle">競馬の展開予想補助ツール</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/my_racing_viewer/" rel="noopener noreferrer" target="_blank">
+<img alt="Viewer Icon" class="app-icon" src="./assets/icons/viewer.png"/>
+<div class="text-box">
+<h2 class="title">My Racing Viewer</h2>
+<p class="subtitle">競馬のレース動画視聴アプリ</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/catalog-photos/" rel="noopener noreferrer" target="_blank">
+<img alt="Catalog Icon" class="app-icon" src="./assets/icons/catalog.png"/>
+<div class="text-box">
+<h2 class="title">クラブ優駿カタログ</h2>
+<p class="subtitle">募集時アルバム</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/image-refinery/" rel="noopener noreferrer" target="_blank">
+<img alt="Refinery Icon" class="app-icon" src="./assets/icons/refinery.png"/>
+<div class="text-box">
+<h2 class="title">Image Refinery</h2>
+<p class="subtitle">画像クロップ＆リサイズ</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/body-tune/" rel="noopener noreferrer" target="_blank">
+<img alt="Body Tune Icon" class="app-icon" src="./assets/icons/body-tune.png"/>
+<div class="text-box">
+<h2 class="title">Body Tune</h2>
+<p class="subtitle">生活習慣の向上支援ツール</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/trash-days/" rel="noopener noreferrer" target="_blank">
+<img alt="Trash Days Icon" class="app-icon" src="./assets/icons/trash-days.png"/>
+<div class="text-box">
+<h2 class="title">Trash Days</h2>
+<p class="subtitle">ゴミ出しカレンダー</p>
+</div>
+</a>
+<a class="card" href="https://gue1971.github.io/monory/" rel="noopener noreferrer" target="_blank">
+<img alt="Monory Icon" class="app-icon" src="./assets/icons/monory.png"/>
+<div class="text-box">
+<h2 class="title">Monory</h2>
+<p class="subtitle">所有物の記録アプリ</p>
+</div>
+</a>
+</section><section class="grid" hidden="" id="gridSecret"></section>
+</main>
+<footer>
+</footer>
+<script>
+(() => {
+  const title = document.getElementById('pageTitle');
+  const secretLabel = document.getElementById('secretLabel');
+  const gridDefault = document.getElementById('gridDefault');
+  const gridSecret = document.getElementById('gridSecret');
 
-  <main>
-    <section class="grid">
+  let secretBuilt = false;
 
-      <a class="card" href="https://gue1971.github.io/world-history-timeline/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/timeline.png" class="app-icon" alt="Timeline Icon">
-        <div class="text-box">
-          <h2 class="title">世界史年表DB</h2>
-          <p class="subtitle">世界史年表</p>
-        </div>
-      </a>
+  const ensureSecret = () => {
+    if (secretBuilt) return;
+    gridSecret.innerHTML = gridDefault.innerHTML; // 同じリストを複製
+    secretBuilt = true;
+  };
 
-      <a class="card" href="https://gue1971.github.io/my-horse/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/horse.png" class="app-icon" alt="Stable Icon">
-        <div class="text-box">
-          <h2 class="title">My Stable</h2>
-          <p class="subtitle">出資馬閲覧アプリ</p>
-        </div>
-      </a>
+  const setMode = (isSecret) => {
+    document.body.classList.toggle('secret', isSecret);
+    gridDefault.hidden = isSecret;
+    gridSecret.hidden = !isSecret;
+    secretLabel.hidden = !isSecret;
+    document.title = isSecret ? 'Monory' : 'Misc.';
+  };
 
-      <a class="card" href="https://gue1971.github.io/race-board/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/board.png" class="app-icon" alt="Board Icon">
-        <div class="text-box">
-          <h2 class="title">レース盤</h2>
-          <p class="subtitle">競馬の展開予想補助ツール</p>
-        </div>
-      </a>
+  const syncFromHash = () => {
+    const isSecret = location.hash === '#secret';
+    if (isSecret) ensureSecret();
+    setMode(isSecret);
+  };
 
-      <a class="card" href="https://gue1971.github.io/my_racing_viewer/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/viewer.png" class="app-icon" alt="Viewer Icon">
-        <div class="text-box">
-          <h2 class="title">My Racing Viewer</h2>
-          <p class="subtitle">競馬のレース動画視聴アプリ</p>
-        </div>
-      </a>
+  title.addEventListener('click', () => {
+    location.hash = (location.hash === '#secret') ? '' : '#secret';
+  });
 
-      <a class="card" href="https://gue1971.github.io/catalog-photos/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/catalog.png" class="app-icon" alt="Catalog Icon">
-        <div class="text-box">
-          <h2 class="title">クラブ優駿カタログ</h2>
-          <p class="subtitle">募集時アルバム</p>
-        </div>
-      </a>
+  title.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      title.click();
+    }
+  });
 
-      <a class="card" href="https://gue1971.github.io/image-refinery/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/refinery.png" class="app-icon" alt="Refinery Icon">
-        <div class="text-box">
-          <h2 class="title">Image Refinery</h2>
-          <p class="subtitle">画像クロップ＆リサイズ</p>
-        </div>
-      </a>
-
-      <a class="card" href="https://gue1971.github.io/body-tune/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/body-tune.png" class="app-icon" alt="Body Tune Icon">
-        <div class="text-box">
-          <h2 class="title">Body Tune</h2>
-          <p class="subtitle">生活習慣の向上支援ツール</p>
-        </div>
-      </a>
-
-      <a class="card" href="https://gue1971.github.io/trash-days/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/trash-days.png" class="app-icon" alt="Trash Days Icon">
-        <div class="text-box">
-          <h2 class="title">Trash Days</h2>
-          <p class="subtitle">ゴミ出しカレンダー</p>
-        </div>
-      </a>
-
-      <a class="card" href="https://gue1971.github.io/monory/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/monory.png" class="app-icon" alt="Monory Icon">
-        <div class="text-box">
-          <h2 class="title">Monory</h2>
-          <p class="subtitle">所有物の記録アプリ</p>
-        </div>
-      </a>
-
-    </section>
-  </main>
-
-  <footer>
-  </footer>
-</body>
+  window.addEventListener('hashchange', syncFromHash);
+  syncFromHash();
+})();
+</script></body>
 </html>
