@@ -183,6 +183,7 @@
     #mainView{
       display: block;
       touch-action: pan-y;
+      min-height: clamp(360px, 55svh, 620px);
     }
     #mainView .main-tab{
       display: none;
@@ -407,7 +408,6 @@
   <script>
     (function(){
       var mainView = document.getElementById('mainView');
-      var mainRoot = document.querySelector('main');
       var mainTabs = mainView ? Array.prototype.slice.call(mainView.querySelectorAll('.main-tab')) : [];
       var dotWrap = document.getElementById('mainDots');
       var dots = dotWrap ? Array.prototype.slice.call(dotWrap.querySelectorAll('.dot')) : [];
@@ -480,9 +480,9 @@
 
       function canStartSwipe(target){
         if (!target) return false;
-        if (!mainRoot || !mainRoot.contains(target)) return false;
         if (target.closest('header')) return false;
         if (target.closest('#mainDots')) return false;
+        if (target.closest('#secretView')) return false;
         return true;
       }
 
