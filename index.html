@@ -464,7 +464,8 @@
       var swipe = {
         startX: 0,
         startY: 0,
-        tracking: false
+        tracking: false,
+        lockedHorizontal: false
       };
 
       function beginSwipe(x, y){
@@ -476,6 +477,7 @@
         swipe.startX = x;
         swipe.startY = y;
         swipe.tracking = true;
+        swipe.lockedHorizontal = false;
       }
 
       function canStartSwipe(target){
@@ -487,8 +489,8 @@
       }
 
       function endSwipe(x, y){
-        var threshold = 28;
-        var dominance = 1.05;
+        var threshold = 18;
+        var dominance = 0.9;
         var deltaX;
         var deltaY;
         if (!swipe.tracking) return;
@@ -497,7 +499,7 @@
         deltaX = x - swipe.startX;
         deltaY = y - swipe.startY;
         if (Math.abs(deltaX) < threshold) return;
-        if (Math.abs(deltaX) <= Math.abs(deltaY) * dominance) return;
+        if (!swipe.lockedHorizontal && Math.abs(deltaX) <= Math.abs(deltaY) * dominance) return;
         suppressClickUntil = Date.now() + 360;
         if (deltaX < 0){
           setMainTab(currentMainTab + 1);
@@ -520,6 +522,7 @@
 
         document.addEventListener('pointercancel', function(){
           swipe.tracking = false;
+          swipe.lockedHorizontal = false;
         }, { passive: true });
 
         document.addEventListener('touchstart', function(e){
@@ -527,6 +530,19 @@
           if (!canStartSwipe(e.target)) return;
           beginSwipe(e.touches[0].clientX, e.touches[0].clientY);
         }, { passive: true });
+
+        document.addEventListener('touchmove', function(e){
+          var deltaX;
+          var deltaY;
+          if (!swipe.tracking) return;
+          if (!e.touches || e.touches.length !== 1) return;
+          deltaX = e.touches[0].clientX - swipe.startX;
+          deltaY = e.touches[0].clientY - swipe.startY;
+          if (Math.abs(deltaX) > 12 && Math.abs(deltaX) > Math.abs(deltaY) * 0.85){
+            swipe.lockedHorizontal = true;
+            e.preventDefault();
+          }
+        }, { passive: false });
 
         document.addEventListener('touchend', function(e){
           if (!e.changedTouches || !e.changedTouches.length) return;
