@@ -40,12 +40,44 @@
       margin: 0 auto;
       padding: 28px 18px 10px;
     }
+    .header-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
     h1{
       margin: 0;
       font-size: 28px;
       font-weight: 700;
       letter-spacing: .02em;
       color: var(--text);
+    }
+    .tab-dots{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 28px;
+    }
+    .dot{
+      appearance: none;
+      -webkit-appearance: none;
+      width: 8px;
+      height: 8px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(100,116,139,.45);
+      padding: 0;
+      cursor: pointer;
+      transition: width .15s ease, background-color .15s ease;
+    }
+    .dot.is-active{
+      width: 20px;
+      background: rgba(100,116,139,.95);
+    }
+    .dot:focus-visible{
+      outline: 2px solid rgba(140,160,255,.8);
+      outline-offset: 3px;
     }
 
     main{
@@ -136,10 +168,16 @@
     footer a{ color: inherit; }
   
     /* ▼ 画面切替（隠れ画面） ▼ */
-    #mainView{ display: grid; }
+    #mainView{
+      display: block;
+      touch-action: pan-y;
+    }
+    #mainView .main-tab{ display: none; }
+    #mainView .main-tab.is-active{ display: grid; }
     #secretView{ display: none; }
     body.view-secret #mainView{ display: none; }
     body.view-secret #secretView{ display: grid; }
+    body.view-secret #mainDots{ display: none; }
 
     /* タイトルクリックを見た目そのままに */
     #titleToggle{
@@ -179,100 +217,112 @@
 
 <body>
   <header>
-    <h1><button id="titleToggle" type="button">Misc.</button></h1>
+    <div class="header-row">
+      <h1><button id="titleToggle" type="button">Misc.</button></h1>
+      <div class="tab-dots" id="mainDots" role="tablist" aria-label="表画面のタブ">
+        <button type="button" class="dot is-active" data-tab="0" aria-label="タブ1"></button>
+        <button type="button" class="dot" data-tab="1" aria-label="タブ2"></button>
+        <button type="button" class="dot" data-tab="2" aria-label="タブ3"></button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section class="grid" id="mainView">
+    <section id="mainView">
+      <section class="grid main-tab is-active" data-tab="0">
 
-      <a class="card" href="https://gue1971.github.io/world-history-timeline/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/timeline.png" class="app-icon" alt="Timeline Icon">
-        <div class="text-box">
-          <h2 class="title">世界史年表DB</h2>
-          <p class="subtitle">世界史年表</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/world-history-timeline/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/timeline.png" class="app-icon" alt="Timeline Icon">
+          <div class="text-box">
+            <h2 class="title">世界史年表DB</h2>
+            <p class="subtitle">世界史年表</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/oval-path/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/oval.png" class="app-icon" alt="アメリカ大統領一覧 Icon">
-        <div class="text-box">
-          <h2 class="title">The Oval Path</h2>
-          <p class="subtitle">アメリカ大統領一覧</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/oval-path/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/oval.png" class="app-icon" alt="アメリカ大統領一覧 Icon">
+          <div class="text-box">
+            <h2 class="title">The Oval Path</h2>
+            <p class="subtitle">アメリカ大統領一覧</p>
+          </div>
+        </a>
 
-      <a class="card" href="duo3://open" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/duo.png" class="app-icon" alt="duo Icon">
-        <div class="text-box">
-          <h2 class="title">Duo 3.0</h2>
-          <p class="subtitle">英単語暗記アプリ</p>
-        </div>
-      </a>
+        <a class="card" href="duo3://open" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/duo.png" class="app-icon" alt="duo Icon">
+          <div class="text-box">
+            <h2 class="title">Duo 3.0</h2>
+            <p class="subtitle">英単語暗記アプリ</p>
+          </div>
+        </a>
+      </section>
 
-      <a class="card" href="https://gue1971.github.io/my-horse/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/horse.png" class="app-icon" alt="Stable Icon">
-        <div class="text-box">
-          <h2 class="title">My Stable</h2>
-          <p class="subtitle">出資馬閲覧アプリ</p>
-        </div>
-      </a>
+      <section class="grid main-tab" data-tab="1">
+        <a class="card" href="https://gue1971.github.io/my-horse/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/horse.png" class="app-icon" alt="Stable Icon">
+          <div class="text-box">
+            <h2 class="title">My Stable</h2>
+            <p class="subtitle">出資馬閲覧アプリ</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/race-board/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/board.png" class="app-icon" alt="Board Icon">
-        <div class="text-box">
-          <h2 class="title">レース盤</h2>
-          <p class="subtitle">競馬の展開予想補助ツール</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/race-board/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/board.png" class="app-icon" alt="Board Icon">
+          <div class="text-box">
+            <h2 class="title">レース盤</h2>
+            <p class="subtitle">競馬の展開予想補助ツール</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/my_racing_viewer/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/viewer.png" class="app-icon" alt="Viewer Icon">
-        <div class="text-box">
-          <h2 class="title">My Racing Viewer</h2>
-          <p class="subtitle">競馬のレース動画視聴アプリ</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/my_racing_viewer/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/viewer.png" class="app-icon" alt="Viewer Icon">
+          <div class="text-box">
+            <h2 class="title">My Racing Viewer</h2>
+            <p class="subtitle">競馬のレース動画視聴アプリ</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/catalog-photos/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/catalog.png" class="app-icon" alt="Catalog Icon">
-        <div class="text-box">
-          <h2 class="title">クラブ優駿カタログ</h2>
-          <p class="subtitle">募集時アルバム</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/catalog-photos/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/catalog.png" class="app-icon" alt="Catalog Icon">
+          <div class="text-box">
+            <h2 class="title">クラブ優駿カタログ</h2>
+            <p class="subtitle">募集時アルバム</p>
+          </div>
+        </a>
+      </section>
 
-      <a class="card" href="https://gue1971.github.io/image-refinery/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/refinery.png" class="app-icon" alt="Refinery Icon">
-        <div class="text-box">
-          <h2 class="title">Image Refinery</h2>
-          <p class="subtitle">画像クロップ＆リサイズ</p>
-        </div>
-      </a>
+      <section class="grid main-tab" data-tab="2">
+        <a class="card" href="https://gue1971.github.io/image-refinery/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/refinery.png" class="app-icon" alt="Refinery Icon">
+          <div class="text-box">
+            <h2 class="title">Image Refinery</h2>
+            <p class="subtitle">画像クロップ＆リサイズ</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/trash-days/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/trash-days.png" class="app-icon" alt="Trash Days Icon">
-        <div class="text-box">
-          <h2 class="title">Trash Days</h2>
-          <p class="subtitle">ゴミ出しカレンダー</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/trash-days/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/trash-days.png" class="app-icon" alt="Trash Days Icon">
+          <div class="text-box">
+            <h2 class="title">Trash Days</h2>
+            <p class="subtitle">ゴミ出しカレンダー</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/body-tune/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/body-tune.png" class="app-icon" alt="Body Tune Icon">
-        <div class="text-box">
-          <h2 class="title">Body Tune</h2>
-          <p class="subtitle">生活習慣の向上支援ツール</p>
-        </div>
-      </a>
+        <a class="card" href="https://gue1971.github.io/body-tune/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/body-tune.png" class="app-icon" alt="Body Tune Icon">
+          <div class="text-box">
+            <h2 class="title">Body Tune</h2>
+            <p class="subtitle">生活習慣の向上支援ツール</p>
+          </div>
+        </a>
 
-      <a class="card" href="https://gue1971.github.io/game-test-g20260213/" target="_blank" rel="noopener noreferrer">
-        <img src="./assets/icons/renai.png" class="app-icon" alt="恋愛シミュレーション Icon">
-        <div class="text-box">
-          <h2 class="title">恋愛シミュレーションの試作</h2>
-          <p class="subtitle">試作ゲーム</p>
-        </div>
-      </a>
-      
+        <a class="card" href="https://gue1971.github.io/game-test-g20260213/" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/icons/renai.png" class="app-icon" alt="恋愛シミュレーション Icon">
+          <div class="text-box">
+            <h2 class="title">恋愛シミュレーションの試作</h2>
+            <p class="subtitle">試作ゲーム</p>
+          </div>
+        </a>
+      </section>
     </section>
     
 
@@ -326,9 +376,81 @@
 
   <script>
     (function(){
+      var mainView = document.getElementById('mainView');
+      var mainTabs = mainView ? Array.prototype.slice.call(mainView.querySelectorAll('.main-tab')) : [];
+      var dotWrap = document.getElementById('mainDots');
+      var dots = dotWrap ? Array.prototype.slice.call(dotWrap.querySelectorAll('.dot')) : [];
+      var currentMainTab = 0;
+
+      function normalizeTabIndex(index){
+        var len = mainTabs.length;
+        if (!len) return 0;
+        return ((index % len) + len) % len;
+      }
+
+      function setMainTab(nextIndex){
+        if (!mainTabs.length) return;
+        currentMainTab = normalizeTabIndex(nextIndex);
+        mainTabs.forEach(function(tab, idx){
+          var active = idx === currentMainTab;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-hidden', active ? 'false' : 'true');
+        });
+        dots.forEach(function(dot, idx){
+          var active = idx === currentMainTab;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+      }
+
       function applyView(){
         document.body.classList.toggle('view-secret', location.hash === '#secret');
       }
+
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var touchTracking = false;
+
+      if (mainView){
+        mainView.addEventListener('touchstart', function(e){
+          if (document.body.classList.contains('view-secret')) return;
+          if (!e.touches || e.touches.length !== 1) return;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          touchTracking = true;
+        }, { passive: true });
+
+        mainView.addEventListener('touchend', function(e){
+          var threshold = 44;
+          var dominance = 1.2;
+          var touch;
+          var deltaX;
+          var deltaY;
+          if (!touchTracking || !e.changedTouches || !e.changedTouches.length) return;
+          if (document.body.classList.contains('view-secret')) return;
+          touch = e.changedTouches[0];
+          deltaX = touch.clientX - touchStartX;
+          deltaY = touch.clientY - touchStartY;
+          touchTracking = false;
+          if (Math.abs(deltaX) < threshold) return;
+          if (Math.abs(deltaX) <= Math.abs(deltaY) * dominance) return;
+          if (deltaX < 0){
+            setMainTab(currentMainTab + 1);
+          } else {
+            setMainTab(currentMainTab - 1);
+          }
+        }, { passive: true });
+      }
+
+      dots.forEach(function(dot){
+        dot.addEventListener('click', function(){
+          var next = Number(dot.getAttribute('data-tab'));
+          if (Number.isNaN(next)) return;
+          setMainTab(next);
+        });
+      });
+
+      setMainTab(0);
       applyView();
       window.addEventListener('hashchange', applyView);
 
