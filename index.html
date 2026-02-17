@@ -489,8 +489,8 @@
       }
 
       function endSwipe(x, y){
-        var threshold = 18;
-        var dominance = 0.9;
+        var threshold = 10;
+        var dominance = 0.75;
         var deltaX;
         var deltaY;
         if (!swipe.tracking) return;
@@ -500,6 +500,10 @@
         deltaY = y - swipe.startY;
         if (Math.abs(deltaX) < threshold) return;
         if (!swipe.lockedHorizontal && Math.abs(deltaX) <= Math.abs(deltaY) * dominance) return;
+        triggerSwipe(deltaX);
+      }
+
+      function triggerSwipe(deltaX){
         suppressClickUntil = Date.now() + 360;
         if (deltaX < 0){
           setMainTab(currentMainTab + 1);
@@ -538,8 +542,13 @@
           if (!e.touches || e.touches.length !== 1) return;
           deltaX = e.touches[0].clientX - swipe.startX;
           deltaY = e.touches[0].clientY - swipe.startY;
-          if (Math.abs(deltaX) > 12 && Math.abs(deltaX) > Math.abs(deltaY) * 0.85){
+          if (Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY) * 0.75){
             swipe.lockedHorizontal = true;
+            e.preventDefault();
+          }
+          if (swipe.lockedHorizontal && Math.abs(deltaX) > 14){
+            swipe.tracking = false;
+            triggerSwipe(deltaX);
             e.preventDefault();
           }
         }, { passive: false });
