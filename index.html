@@ -56,22 +56,34 @@
     .tab-dots{
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 14px;
       min-height: 28px;
     }
     .dot{
       appearance: none;
       -webkit-appearance: none;
-      width: 8px;
-      height: 8px;
+      width: 26px;
+      height: 26px;
       border: none;
       border-radius: 999px;
-      background: rgba(100,116,139,.45);
+      background: transparent;
       padding: 0;
       cursor: pointer;
+      position: relative;
+    }
+    .dot::before{
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: rgba(100,116,139,.45);
       transition: width .15s ease, background-color .15s ease;
     }
-    .dot.is-active{
+    .dot.is-active::before{
       width: 20px;
       background: rgba(100,116,139,.95);
     }
@@ -395,6 +407,7 @@
   <script>
     (function(){
       var mainView = document.getElementById('mainView');
+      var mainRoot = document.querySelector('main');
       var mainTabs = mainView ? Array.prototype.slice.call(mainView.querySelectorAll('.main-tab')) : [];
       var dotWrap = document.getElementById('mainDots');
       var dots = dotWrap ? Array.prototype.slice.call(dotWrap.querySelectorAll('.dot')) : [];
@@ -465,6 +478,14 @@
         swipe.tracking = true;
       }
 
+      function canStartSwipe(target){
+        if (!target) return false;
+        if (!mainRoot || !mainRoot.contains(target)) return false;
+        if (target.closest('header')) return false;
+        if (target.closest('#mainDots')) return false;
+        return true;
+      }
+
       function endSwipe(x, y){
         var threshold = 28;
         var dominance = 1.05;
@@ -486,31 +507,33 @@
       }
 
       if (mainView){
-        mainView.addEventListener('pointerdown', function(e){
+        document.addEventListener('pointerdown', function(e){
           if (e.pointerType !== 'touch') return;
+          if (!canStartSwipe(e.target)) return;
           beginSwipe(e.clientX, e.clientY);
         }, { passive: true });
 
-        mainView.addEventListener('pointerup', function(e){
+        document.addEventListener('pointerup', function(e){
           if (e.pointerType !== 'touch') return;
           endSwipe(e.clientX, e.clientY);
         }, { passive: true });
 
-        mainView.addEventListener('pointercancel', function(){
+        document.addEventListener('pointercancel', function(){
           swipe.tracking = false;
         }, { passive: true });
 
-        mainView.addEventListener('touchstart', function(e){
+        document.addEventListener('touchstart', function(e){
           if (!e.touches || e.touches.length !== 1) return;
+          if (!canStartSwipe(e.target)) return;
           beginSwipe(e.touches[0].clientX, e.touches[0].clientY);
         }, { passive: true });
 
-        mainView.addEventListener('touchend', function(e){
+        document.addEventListener('touchend', function(e){
           if (!e.changedTouches || !e.changedTouches.length) return;
           endSwipe(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
         }, { passive: true });
 
-        mainView.addEventListener('click', function(e){
+        document.addEventListener('click', function(e){
           if (Date.now() <= suppressClickUntil){
             e.preventDefault();
           }
