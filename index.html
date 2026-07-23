@@ -293,6 +293,14 @@
             <p class="subtitle">生活習慣の向上支援ツール</p>
           </div>
         </a>
+
+        <a class="card" href="https://gue1971.github.io/line-stamp-index/">
+          <img src="./assets/icons/line-stamp-index.png" class="app-icon" alt="LINEスタンプ索引 Icon">
+          <div class="text-box">
+            <h2 class="title">LINEスタンプ索引</h2>
+            <p class="subtitle">所有しているLINEスタンプ240個を検索・確認する索引</p>
+          </div>
+        </a>
       </section>
 
       <section class="grid main-tab" data-tab="1">
@@ -669,6 +677,12 @@
         });
       }
     })();
+
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')){
+      window.addEventListener('load', function(){
+        navigator.serviceWorker.register('./sw.js?v=20260723', { updateViaCache: 'none' });
+      });
+    }
   </script>
 </body>
 </html>
