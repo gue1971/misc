@@ -1,4 +1,4 @@
-const CACHE_NAME = 'misc-v20260723-2';
+const CACHE_NAME = 'misc-v20260806-1';
 const APP_SHELL = [
   './',
   './index.html',
@@ -6,6 +6,7 @@ const APP_SHELL = [
   './assets/icons/phrase-atlas.png',
   './assets/icons/refinery.png',
   './assets/icons/trash-days.png',
+  './assets/icons/hit.svg',
   './assets/icons/body-tune.png',
   './assets/icons/line-stamp-index.png',
   './assets/icons/timeline.png',
