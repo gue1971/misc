@@ -1,9 +1,8 @@
-const CACHE_NAME = 'misc-v20260924-1';
+const CACHE_NAME = 'misc-v20260924-2';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './assets/icons/phrase-atlas.png',
   './assets/icons/refinery.png',
   './assets/icons/trash-days.png',
   './assets/icons/hit.svg',
@@ -14,6 +13,8 @@ const APP_SHELL = [
   './assets/icons/oval.png',
   './assets/icons/duo.png',
   './assets/icons/lgmtlc.png',
+  './assets/icons/phrase-atlas.png',
+  './assets/icons/commonplace.png',
   './assets/icons/horse.png',
   './assets/icons/photo-paddock.png',
   './assets/icons/board.png',
@@ -21,7 +22,6 @@ const APP_SHELL = [
   './assets/icons/catalog.png',
   './assets/icons/renai.png',
   './assets/icons/ai-news-2025.png',
-  './assets/icons/commonplace.png',
   './assets/icons/y-note.png',
   './assets/icons/amidapon.png',
   './assets/icons/carp-app.png',

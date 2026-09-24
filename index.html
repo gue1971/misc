@@ -262,14 +262,6 @@
   <main>
     <section id="mainView">
       <section class="grid main-tab is-active" data-tab="0">
-        <a class="card" href="https://gue1971.github.io/phrase-atlas/">
-          <img src="./assets/icons/phrase-atlas.png" class="app-icon" alt="ことばカルテ Icon">
-          <div class="text-box">
-            <h2 class="title">ことばカルテ</h2>
-            <p class="subtitle">聞いたことある言葉の、出どころと背景を読む小さな辞典</p>
-          </div>
-        </a>
-
         <a class="card" href="https://gue1971.github.io/image-refinery/">
           <img src="./assets/icons/refinery.png" class="app-icon" alt="Refinery Icon">
           <div class="text-box">
@@ -351,6 +343,22 @@
             <p class="subtitle">リンガメタリカ学習用ビューア</p>
           </div>
         </a>
+
+        <a class="card" href="https://gue1971.github.io/phrase-atlas/">
+          <img src="./assets/icons/phrase-atlas.png" class="app-icon" alt="ことばカルテ Icon">
+          <div class="text-box">
+            <h2 class="title">ことばカルテ</h2>
+            <p class="subtitle">聞いたことある言葉の、出どころと背景を読む小さな辞典</p>
+          </div>
+        </a>
+
+        <a class="card" href="https://mac-mini.tailec7e85.ts.net:8444/commonplace/#library">
+          <img src="./assets/icons/commonplace.png" class="app-icon" alt="Commonplace Icon">
+          <div class="text-box">
+            <h2 class="title">Commonplace</h2>
+            <p class="subtitle">本棚と蔵の読書ビューア</p>
+          </div>
+        </a>
       </section>
 
       <section class="grid main-tab" data-tab="2">
@@ -412,14 +420,6 @@
           </div>
         </a>
 
-        <a class="card" href="https://mac-mini.tailec7e85.ts.net:8444/commonplace/#library">
-          <img src="./assets/icons/commonplace.png" class="app-icon" alt="Commonplace Icon">
-          <div class="text-box">
-            <h2 class="title">Commonplace</h2>
-            <p class="subtitle">本棚と蔵の読書ビューア</p>
-          </div>
-        </a>
-
         <a class="card" href="https://gue1971.github.io/y-note/">
           <img src="./assets/icons/y-note.png" class="app-icon" alt="y-note Icon">
           <div class="text-box">
@@ -473,19 +473,19 @@
         </div>
       </a>
 
-      <a class="card" href="https://mac-mini.tailec7e85.ts.net:8445/family-assets-2/">
-        <img src="./assets/icons/family-assets-2.png" class="app-icon" alt="金融資産 Icon">
-        <div class="text-box">
-          <h2 class="title">金融資産</h2>
-          <p class="subtitle">Family Assets 2</p>
-        </div>
-      </a>
-
       <a class="card" href="https://drive.google.com/drive/folders/1-XRXgbHA6uFza-4ekdk8OsG5x4DPZNZk?usp=drive_link">
         <img src="./assets/icons/asset.png" class="app-icon" alt="asset Icon">
         <div class="text-box">
           <h2 class="title">資産管理レポート</h2>
           <p class="subtitle">PDFフォルダ</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://mac-mini.tailec7e85.ts.net:8445/family-assets-2/">
+        <img src="./assets/icons/family-assets-2.png" class="app-icon" alt="Family Assets 2 Icon">
+        <div class="text-box">
+          <h2 class="title">Family Assets 2</h2>
+          <p class="subtitle">金融資産管理レポート</p>
         </div>
       </a>
 
@@ -728,7 +728,7 @@
 
     if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')){
       window.addEventListener('load', function(){
-        navigator.serviceWorker.register('./sw.js?v=20260924-1', { updateViaCache: 'none' });
+        navigator.serviceWorker.register('./sw.js?v=20260924-2', { updateViaCache: 'none' });
       });
     }
   </script>
