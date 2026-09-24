@@ -1,4 +1,4 @@
-const CACHE_NAME = 'misc-v20260808-1';
+const CACHE_NAME = 'misc-v20260924-1';
 const APP_SHELL = [
   './',
   './index.html',
@@ -21,15 +21,18 @@ const APP_SHELL = [
   './assets/icons/catalog.png',
   './assets/icons/renai.png',
   './assets/icons/ai-news-2025.png',
+  './assets/icons/commonplace.png',
   './assets/icons/y-note.png',
   './assets/icons/amidapon.png',
   './assets/icons/carp-app.png',
   './assets/icons/quokka55.png',
   './assets/icons/little-free.svg',
   './assets/icons/asset.png',
+  './assets/icons/family-assets-2.png',
   './assets/icons/loopay.png',
   './assets/icons/kayoi.png',
-  './assets/icons/monory.png'
+  './assets/icons/monory.png',
+  './assets/icons/shinonome.png'
 ];
 
 self.addEventListener('install', function(event){
